@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.css">
+		<link rel="stylesheet" href="<c:url value='/bootstrap-3.3.7-dist/css/bootstrap.css'></c:url>">
 		<title>SGP - App</title>
 		<style>
 		
@@ -26,26 +26,23 @@
 	</head>
 	<body>
 		<h1>Les collaborateurs</h1>
-			<%
-			 List<Collaborateur> listCollaborateurs = (List<Collaborateur>) request.getAttribute("listeCollaborateurs");
-				for (Collaborateur collaborateur : listCollaborateurs) {
-			%>
+		<c:forEach var="collab" items="${listCollaborateurs}">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						
                         <div class="thumbnail">
                             <div class="caption">
-                                <span><%="Nom : " + collaborateur.getNom()%></span>
+                                <span>Nom :  ${collab.nom}</span>
                                 <br>
-                                 <span><%="Prenom :" +collaborateur.getPrenom()%></span>
+                                 <span>Prenom : ${collab.prenom}</span>
                                 <br>
-                                <span><%="Adresse : " + collaborateur.getAdresse()%></span>
+                                <span>Adresse : ${collab.adresse}</span>
                                  <br>
-                                <span><%="Email : " + collaborateur.getEmailPro()%></span>
+                                <span>Email : ${collab.emailPro}</span>
                                 <button class="pull-right btn btn-primary" type="button" name="editer" id="editer">Editer</button>
                             </div>
                         </div>
-                        </div>
-			<%
-				}
-			%>
+            </div>
+        </c:forEach>
+			
 	</body>
 </html>
