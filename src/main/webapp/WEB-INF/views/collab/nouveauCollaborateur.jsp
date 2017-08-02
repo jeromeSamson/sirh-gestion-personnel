@@ -49,8 +49,7 @@
 			<div class="form-group">
 				<label class="col-md-3 control-label" for="numSecu">Numéro sécurité social</label>
 				<div class="col-md-3">
-					<input id="numSecuSocial" type="text" pattern="[0-9]{15}" name="numSecu" class="form-control input-md" required="">
-					<span class="help-block">15 chiffres</span>
+					<input id="numSecuSocial" type="text" pattern="[1-2][0-9]{14}" title="Veuillez saisir un numéro de sécurité social valide 15 chiffres " name="numSecu" class="form-control input-md" required="">
 				</div>
 			</div>
 			<div class="form-group col-md-12 control-label">

@@ -28,7 +28,6 @@
 		<h1>Les collaborateurs</h1>
 		<c:forEach var="collab" items="${listCollaborateurs}">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-						
                         <div class="thumbnail">
                             <div class="caption">
                                 <span>Nom :  ${collab.nom}</span>

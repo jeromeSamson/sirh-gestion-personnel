@@ -35,6 +35,7 @@ public class CreerCollaborateur extends HttpServlet {
 					.sauvegarderCollaborateur(new Collaborateur(req.getParameter("nom"), req.getParameter("prenom"),
 							dateNaissance, req.getParameter("adresse"), numSecuSocial, ZonedDateTime.now()));
 			resp.sendRedirect("lister");
+
 		}
 	}
 
