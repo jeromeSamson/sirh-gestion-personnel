@@ -1,12 +1,13 @@
 package dev.sgp.web;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dev.sgp.util.Constante;
 
 public class ListerCollaborateursController extends HttpServlet {
 
@@ -25,7 +26,7 @@ public class ListerCollaborateursController extends HttpServlet {
 		// "</ul>");
 		// req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req,
 		// resp);
-		req.setAttribute("listeNoms", Arrays.asList("Robert", "Jean", "Hugues"));
+		req.setAttribute("listeCollaborateurs", Constante.COLLAB_SERVICE.listerCollaborateurs());
 		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
 	}
 
