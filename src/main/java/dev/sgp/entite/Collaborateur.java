@@ -12,8 +12,12 @@ public class Collaborateur {
 	private String numSecuSocial;
 	private String emailPro;
 	private String photo;
+	private String tel;
 	private ZonedDateTime dateHeurCreation;
 	private boolean actif;
+	private String intitulePoste;
+
+	private Departement departement;
 
 	public Collaborateur(String nom, String prenom, LocalDate dateNaissance, String adresse, String numSecuSocial,
 			ZonedDateTime dateHeurCreation) {
@@ -23,6 +27,20 @@ public class Collaborateur {
 		this.adresse = adresse;
 		this.numSecuSocial = numSecuSocial;
 		this.dateHeurCreation = dateHeurCreation;
+
+	}
+
+	public Collaborateur(String nom, String prenom, LocalDate dateNaissance, String adresse, String numSecuSocial,
+			ZonedDateTime dateHeurCreation, Departement dp, String poste, String tel) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.numSecuSocial = numSecuSocial;
+		this.dateHeurCreation = dateHeurCreation;
+		this.departement = dp;
+		this.intitulePoste = poste;
+		this.tel = tel;
 
 	}
 
@@ -104,6 +122,30 @@ public class Collaborateur {
 
 	public void setActif(boolean actif) {
 		this.actif = actif;
+	}
+
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
 }

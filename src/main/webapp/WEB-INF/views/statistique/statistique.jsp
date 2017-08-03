@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>Statistique</h1>
-	<div id="Stat" class="col-lg-10 col-lg-offset-1">
+	<div id="Stat" class="col-lg-11 col-lg-offset-1">
 		
     	<table class="table table-striped">
     	<thead>
@@ -36,11 +36,9 @@
     			</tr>
     		</c:forEach>
     	</tbody>
-    	
-    		
-    	
-    	
     	</table>
     </div>
+    <br>
+    <a style="margin: 25px;" href="<c:url value='lister'></c:url>">Lister les collaborateurs</a>    
 </body>
 </html>

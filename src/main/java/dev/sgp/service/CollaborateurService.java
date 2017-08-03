@@ -16,6 +16,7 @@ public class CollaborateurService {
 
 	public void sauvegarderCollaborateur(Collaborateur collab) {
 		String matricule = UUID.randomUUID().toString();
+		collab.setPhoto("http://www.chatsdesrues.fr/wp-content/uploads/2016/10/acheter-jouet-pour-chat-pas-cher.jpg");
 		String suffixe = ResourceBundle.getBundle("application").getString("suffixe");
 		collab.setEmailPro(collab.getPrenom() + "." + collab.getNom() + suffixe);
 		collab.setMatricule(matricule);

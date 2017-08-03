@@ -3,12 +3,14 @@ package dev.sgp.web;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.sgp.util.Constante;
 
+@WebServlet("collaborateurs/lister")
 public class ListerCollaborateursController extends HttpServlet {
 
 	@Override
@@ -27,6 +29,7 @@ public class ListerCollaborateursController extends HttpServlet {
 		// req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req,
 		// resp);
 		req.setAttribute("listCollaborateurs", Constante.COLLAB_SERVICE.listerCollaborateurs());
+		req.setAttribute("listDepartement", Constante.DEPARTEMENT_SERVICE.listerDepartement());
 		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
 	}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,10 +53,14 @@
 					<input id="numSecuSocial" type="text" pattern="[1-2][0-9]{14}" title="Veuillez saisir un numéro de sécurité social valide 15 chiffres " name="numSecu" class="form-control input-md" required="">
 				</div>
 			</div>
-			<div class="form-group col-md-12 control-label">
+			<div class="form-group col-md-6 control-label">
 				<button type="submit" id="singlebutton" name="creer" class="btn btn-primary">Créer</button>
 			</div>
 		</fieldset>
-	</form>
+	</form>	
+	<footer>
+	 <a style="margin: 25px;" href="<c:url value='lister'></c:url>">Lister les collaborateurs</a>
+	 <a style="margin: 25px;" href="<c:url value='stats'></c:url>">Statistique</a>
+	</footer>
 </body>
 </html>
