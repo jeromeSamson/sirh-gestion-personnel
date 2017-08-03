@@ -2,6 +2,7 @@ package dev.sgp.web.filtre;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,11 +13,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import dev.sgp.entite.VisiteWeb;
-import dev.sgp.util.Constante;
+import dev.sgp.service.VisiteService;
 
 @WebFilter(urlPatterns = { "/*" }, description = "Request path and time")
 public class FrequentationFilter implements Filter {
 	private FilterConfig config = null;
+	@Inject
+	VisiteService visiteService;
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,7 +33,7 @@ public class FrequentationFilter implements Filter {
 		long before = System.currentTimeMillis();
 		chain.doFilter(request, response);
 		long after = System.currentTimeMillis();
-		Constante.VISITE_SERVICE.sauvegarderVisite(new VisiteWeb(path, (int) (after - before)));
+		visiteService.sauvegarderVisite(new VisiteWeb(path, (int) (after - before)));
 	}
 
 	@Override

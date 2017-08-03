@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <link rel="stylesheet"
 	href="<c:url value='/bootstrap-3.3.7-dist/css/bootstrap.css'></c:url>">
 <title>SGP - App</title>

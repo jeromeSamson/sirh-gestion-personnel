@@ -3,7 +3,21 @@ package dev.sgp.entite;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@Entity
+@NamedQueries({ @NamedQuery(name = "collaborateur.findAll", query = "Select c from Collaborateur c"),
+		@NamedQuery(name = "collaborateur.findByMatricule", query = "Select c from Collaborateur c where c.matricule=:matricule") })
 public class Collaborateur {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String matricule;
 	private String nom;
 	private String prenom;
@@ -16,7 +30,11 @@ public class Collaborateur {
 	private ZonedDateTime dateHeurCreation;
 	private boolean actif;
 	private String intitulePoste;
+	private String banque;
+	private String iban;
+	private String bic;
 
+	@ManyToOne
 	private Departement departement;
 
 	public Collaborateur(String nom, String prenom, LocalDate dateNaissance, String adresse, String numSecuSocial,
@@ -27,6 +45,10 @@ public class Collaborateur {
 		this.adresse = adresse;
 		this.numSecuSocial = numSecuSocial;
 		this.dateHeurCreation = dateHeurCreation;
+
+	}
+
+	public Collaborateur() {
 
 	}
 
@@ -41,6 +63,20 @@ public class Collaborateur {
 		this.departement = dp;
 		this.intitulePoste = poste;
 		this.tel = tel;
+
+	}
+
+	public Collaborateur(String matricule, String adresse, String tel, boolean actif, String intitulePoste,
+			String banque, String iban, String bic, Departement departement) {
+		this.matricule = matricule;
+		this.adresse = adresse;
+		this.tel = tel;
+		this.actif = actif;
+		this.intitulePoste = intitulePoste;
+		this.banque = banque;
+		this.iban = iban;
+		this.bic = bic;
+		this.departement = departement;
 
 	}
 
@@ -146,6 +182,30 @@ public class Collaborateur {
 
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
+	}
+
+	public String getBanque() {
+		return banque;
+	}
+
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+	public String getBic() {
+		return bic;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
 	}
 
 }

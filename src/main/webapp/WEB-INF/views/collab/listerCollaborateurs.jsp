@@ -37,53 +37,59 @@
 				</label> <label class="col-md-6 control-label" for="selectbasic"
 					style="margin-top: 10px;">Rechercher par département : <select
 					id="departement" name="listDepartement" class="form-control">
-							<option value="0">Tous</option> 
+						<option value="0">Tous</option>
 						<c:forEach var="dep" items="${listDepartement}" varStatus="loop">
 							<option value="${loop.index+1}">${dep.nom}</option>
 						</c:forEach>
 				</select>
 				</label>
 				<div class="form-group">
-				<div class="col-md-6	">
+					<div class="col-md-6	">
 						<label class="checkbox-inline" for="checkboxes-0"> <input
 							type="checkbox" name="checkboxes" id="checkboxes-0" value="0">
 							<span>Voir les collaborateurs désactivés</span>
 						</label>
-					</div>					
+					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-		<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row">
-		<c:forEach var="collab" items="${listCollaborateurs}">
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
-				style="margin-top: 10px;">
-				<form class="form-inline">
-					<div class="thumbnail" style="margin-right: 10px">
-						<span><h3>${collab.nom}, ${collab.prenom}</h3></span>
-						<div class="row">
-						<div class="caption col-offset-1 col-md-4">
-						<img alt="test" src="${collab.photo}" class="text-left img-responsive img-circle" width="40%" >
+			<c:forEach var="collab" items="${listCollaborateurs}">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+					style="margin-top: 10px;">
+					<form class="form-inline" method="get" action="editer">
+						<div class="thumbnail" style="margin-right: 10px">
+							<span><h3>${collab.nom},${collab.prenom}</h3></span>
+							<div class="row">
+								<div class="caption col-offset-1 col-md-4">
+									<img alt="test" src="${collab.photo}"
+										class="text-left img-responsive img-circle" width="40%">
+								</div>
+								<div class="col-md-6">
+									<span>Fonction : ${collab.intitulePoste}</span> <br> <span>Département
+										: ${collab.departement.nom}</span><br> <span>Email :
+										${collab.emailPro}</span> <span>Telephone : ${collab.tel}</span>
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="Editer"></label>
+										<div class="col-md-4">
+											<input type="hidden" name="matricule" value="${collab.matricule }">
+											<button type="submit"  >Editer</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
 						</div>
-						<div class="col-md-6">
-							<span>Fonction : ${collab.intitulePoste}</span> <br>
-							<span>Département : ${collab.departement.nom}</span><br>
-							<span>Email : ${collab.emailPro}</span>
-							<span>Telephone : ${collab.tel}</span>
-							<button class="pull-right btn btn-primary" type="button"
-								name="editer" id="editer">Editer</button>
-						</div>
-					</div>
-					</div>
-				</form>
-			</div>
+					</form>
+				</div>
 			</c:forEach>
 		</div>
-		
+
 		<label class="control-label" for="Envoyer"></label>
 		<div class="col-md-4">
-			<a id="Statistiques"
+			<a id="creerCollab"
 				href='<c:url value="creerCollaborateur"></c:url>'
 				class="btn btn-primary">Créer Collaborateur</a>
 		</div>
