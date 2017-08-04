@@ -23,6 +23,7 @@ public class StatistiqueController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		req.setCharacterEncoding("UTF-8");
 		List<VisiteWeb> listVisite = visiteService.listerVisite();
 		Map<String, List<VisiteWeb>> map = listVisite.stream().collect(Collectors.groupingBy(v -> v.getChemin()));

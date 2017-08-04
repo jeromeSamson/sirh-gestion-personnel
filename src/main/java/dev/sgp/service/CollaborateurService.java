@@ -26,6 +26,11 @@ public class CollaborateurService {
 		return em.createNamedQuery("collaborateur.findAll").getResultList();
 	}
 
+	public List<Collaborateur> listerCollaborateurByDep(Integer id) {
+		return em.createNamedQuery("collaborateur.findAllByDepartement").setParameter("dep", id).getResultList();
+
+	}
+
 	public void sauvegarderCollaborateur(Collaborateur collab) {
 		String matricule = UUID.randomUUID().toString();
 		collab.setPhoto("http://www.chatsdesrues.fr/wp-content/uploads/2016/10/acheter-jouet-pour-chat-pas-cher.jpg");
@@ -55,5 +60,15 @@ public class CollaborateurService {
 
 	public Collaborateur getCollabByMatricule(String mat) {
 		return listerCollaborateurs().stream().filter(p -> p.getMatricule().equals(mat)).findFirst().get();
+	}
+
+	public void updateBanque(Collaborateur collab) {
+		Collaborateur col = getCollabByMatricule(collab.getMatricule());
+		col.setBanque(collab.getBanque());
+		col.setBic(collab.getBic());
+		col.setIban(collab.getIban());
+		em.merge(col);
+		collabEvt.fire(
+				new CollabEvt(collab.getDateHeurCreation(), TypeCollabEvt.MODIFICATION_COLLAB, collab.getMatricule()));
 	}
 }
