@@ -105,17 +105,20 @@ public class CollaborateursResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Object getBanqueByMatricule(@PathParam("matricule") String matricule) {
 		Collaborateur collab = collabSer.getCollabByMatricule(matricule);
-		if (collab.getBanque() == null || collab.getBic() == null || collab.getIban() == null) {
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity("Des informations concernant la banque sont manquantes veuillez editer le collaborateur : "
-							+ collab.getNom().toUpperCase() + " " + collab.getPrenom())
-					.build();
-		} else {
-			JsonObject jo = Json.createObjectBuilder().add("banque", collab.getBanque()).add("bic", collab.getBic())
-					.add("iban", collab.getIban()).build();
-			return jo;
+		String banque = "";
+		String bic = "";
+		String iban = "";
+		if (collab.getBanque() != null) {
+			banque = collab.getBanque();
 		}
-
+		if (collab.getBic() != null) {
+			bic = collab.getBic();
+		}
+		if (collab.getIban() != null) {
+			iban = collab.getIban();
+		}
+		JsonObject jo = Json.createObjectBuilder().add("banque", banque).add("bic", bic).add("iban", iban).build();
+		return jo;
 	}
 
 	@PUT
