@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ @NamedQuery(name = "collaborateur.findAll", query = "Select c from Collaborateur c"),
 		@NamedQuery(name = "collaborateur.findByMatricule", query = "Select c from Collaborateur c where c.matricule=:matricule"),
-		@NamedQuery(name = "collaborateur.findAllByDepartement", query = "Select c from Collaborateur c where c.departement.id=:dep)") })
+		@NamedQuery(name = "collaborateur.findAllByDepartement", query = "Select c from Collaborateur c where c.departement.id=:dep") })
 public class Collaborateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
